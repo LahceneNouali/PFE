@@ -19,7 +19,7 @@ c = conn.cursor()
 c.execute("SELECT * FROM images")
 data = c.fetchall()
 
-img1 = cv2.imread('dataset/test/IMG_20190923_171316.jpg',0)
+img1 = cv2.imread('test/IMG_20190923_171316.jpg',0)          # queryImage
 scale_percent = 29 # percent of original size
 width = int(img1.shape[1] * scale_percent / 100)
 height = int(img1.shape[0] * scale_percent / 100)
@@ -59,7 +59,7 @@ for row in data:
     i += 1
 
 #-- ------------------------- Drawing ----------------------------  
-img2 = cv2.imread('dataset/images/'+name,0)
+img2 = cv2.imread('dataset/'+name,0)
 scale_percent = 29 # percent of original size
 width = int(img2.shape[1] * scale_percent / 100)
 height = int(img2.shape[0] * scale_percent / 100)

@@ -1,5 +1,5 @@
 # USAGE
-# python test_network.py --model my_model.h5 --image dataset/test/IMG_20200528_132250.jpg
+# python test_network.py --model my_model.h5 --image test/IMG_20200528_132250.jpg
 
 # import the necessary packages
 from keras.preprocessing.image import img_to_array

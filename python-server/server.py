@@ -31,13 +31,13 @@ while running:
     # resize image
     #img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
  
-    #print('Resized Dimensions : ',resized.shape)
+    #print('Resized Dimensions : ',img.shape)
  
     cv2.imshow("Received image", img)
     cv2.waitKey(1)
 	
 	# Heavy work here
 	# ...
-	
+
 	conn1.sendall('welcom')
-    conn1.close()
+	conn1.close()

@@ -27,7 +27,7 @@ sift = cv2.xfeatures2d.SIFT_create()
 surf = cv2.xfeatures2d.SURF_create()
 orb = cv2.xfeatures2d.SURF_create()
 
-path = 'dataset/images'
+path = 'dataset'
 fileNames = os.listdir(path)
 pbar = progressbar.ProgressBar()
 
