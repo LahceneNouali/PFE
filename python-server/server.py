@@ -1,43 +1,48 @@
+print("Loading...")
+from deep_learning.test_network import Classification
+from image_matching.feature_matching import Matching
+from matplotlib import pyplot as plt
 import socket
 import cv2
-
-# The @IP of the server must be fixed on 192.168.1.78
-# https://stackoverflow.com/questions/54522699/image-transferring-from-android-to-python-socket-issue
 
 address = ('', 8080)
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(address)
 s.listen(1000)
 
-running = True
-while running:
-    conn1, addr = s.accept()
+c = Classification()
+# m = Matching()
+# -- ----------------------------------------------------------------
+i = cv2.imread('dataset/test/1/3L027240.jpg', cv2.IMREAD_UNCHANGED)
+classlabel = c.classify(i)
+# filename = m.match(i, '1')
+# -- ----------------------------------------------------------------
+print("Waiting...")
+while False:
+    print("")
+    conn, addr = s.accept()
 	
-    with open('tst.jpg', 'wb') as img:
+    with open('input.jpg', 'wb') as img:
         while True:
-            data = conn1.recv(1024)
+            data = conn.recv(1024)
+            # print("Receiving data")
             if not data:
                 break
             img.write(data)
-
-    img = cv2.imread('tst.jpg', cv2.IMREAD_UNCHANGED)
- 
-    #print('Original Dimensions : ',img.shape)
- 
-    #scale_percent = 29 # percent of original size
-    #width = int(img.shape[1] * scale_percent / 100)
-    #height = int(img.shape[0] * scale_percent / 100)
-    #dim = (width, height)
-    # resize image
-    #img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
- 
-    #print('Resized Dimensions : ',img.shape)
- 
-    cv2.imshow("Received image", img)
-    cv2.waitKey(1)
+			
+    # -- ----------------------------------------------------------------			
+    i = cv2.imread('input.jpg', cv2.IMREAD_UNCHANGED)	
+    classlabel = c.classify(i)
+    filepath = m.match(i, classlabel)
+    # -- ----------------------------------------------------------------
+    if filepath != "":
+	    o = cv2.imread(filepath, cv2.IMREAD_UNCHANGED)
+	    cv2.imwrite("output.jpg", o)
+	    filename = filepath.split(os.path.sep)[-1][:2]
+    else:
+	    filename = ""
 	
-	# Heavy work here
-	# ...
+    response = classlabel+", "+filename
+    conn.sendall(response.encode())
+    conn.close()
 
-	conn1.sendall('welcom')
-	conn1.close()
