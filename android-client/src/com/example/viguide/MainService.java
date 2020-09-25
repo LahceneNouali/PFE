@@ -106,7 +106,7 @@ public class MainService extends Service {
         Notification notification = new NotificationCompat.Builder(this)
                 .setContentTitle("Visually Impaired Guide")
                 .setContentText(input)
-                .setSmallIcon(R.drawable.baseline_linked_camera_black_24)
+                .setSmallIcon(R.drawable.ic_launcher)
                 .setContentIntent(pendingIntent)
                 .build();
 

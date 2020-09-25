@@ -7,15 +7,15 @@ import cv2
 
 address = ('', 8080)
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind(address)
-s.listen(1000)
+# s.bind(address)
+# s.listen(1000)
 
 c = Classification()
-# m = Matching()
+m = Matching()
 # -- ----------------------------------------------------------------
-i = cv2.imread('dataset/test/1/3L027240.jpg', cv2.IMREAD_UNCHANGED)
+i = cv2.imread('dataset/test_set/1/3L027580.jpg', cv2.IMREAD_UNCHANGED)
 classlabel = c.classify(i)
-# filename = m.match(i, '1')
+# filepath = m.match(i, classlabel)
 # -- ----------------------------------------------------------------
 print("Waiting...")
 while False:

@@ -18,7 +18,7 @@ class Classification:
 		image = np.expand_dims(image, axis=0)
 
 		# class labels
-		classes = ['1', '2', '3', '4']
+		classes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
 		# load the trained convolutional neural network
 		model = tf.keras.models.load_model("deep_learning/model.h5", custom_objects=None, compile=True)
@@ -31,7 +31,7 @@ class Classification:
 		prediction_label = classes[MaxPosition]
 		proba = prediction[MaxPosition]
 		
-		if proba >= 0.3:
+		if proba >= 0.1:
 			label = "{} {:.2f}%".format(prediction_label, proba * 100)
 			print("1-[IMAGE CLASSIFICATION] | class:", label)
 			

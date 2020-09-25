@@ -31,7 +31,7 @@ BS = 32
 # parent directory
 parent = os.path.dirname(os.getcwd())
 # dataset path
-dataset = os.path.join(parent, 'dataset', 'train')
+dataset = os.path.join(parent, 'dataset', 'train_set')
 
 # grab the list of images in our dataset directory, then initialize
 # the list of data (i.e., images) and class images
@@ -87,7 +87,7 @@ headModel = AveragePooling2D(pool_size=(4, 4))(headModel)
 headModel = Flatten(name="flatten")(headModel)
 headModel = Dense(64, activation="relu")(headModel)
 headModel = Dropout(0.5)(headModel)
-headModel = Dense(3, activation="softmax")(headModel)
+headModel = Dense(10, activation="softmax")(headModel)
 
 # place the head FC model on top of the base model (this will become
 # the actual model we will train)

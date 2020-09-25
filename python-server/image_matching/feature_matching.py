@@ -40,7 +40,7 @@ class Matching:
 		search_params = dict(checks=50)   # or pass empty dictionary
 		flann = cv2.FlannBasedMatcher(index_params,search_params)
 
-		best , i = 0 , 1
+		best_ratio , i = 0 , 1
 		for row in data:
 			matches = flann.knnMatch(des1,row[1],k=2)
 			
@@ -49,18 +49,20 @@ class Matching:
 			for m,n in matches:
 				if m.distance < 0.7*n.distance:
 					good.append([m])
-			print("[{}] {}".format(row[0].split(os.path.sep)[-1], len(good)))
+					
+			c_ratio = len(good)/len(row[1])
+			print("[{}] {0:.2f}".format(row[0].split(os.path.sep)[-1], c_ratio))
 			
-			if len(good) > best:
-				best = len(good)
+			if c_ratio > best_ratio:
+				best_ratio = c_ratio
 				imagePath = row[0]
 				# matches_ = matches
 
 			i += 1
 
-		print("2-[IMAGE MATCHING]       | ratio:", best)
+		print("2-[IMAGE MATCHING]       | ratio: {0:.2f}".format(best_ratio))
 		
-		if best >= 50:
+		if best_ratio >= 0.5:
 		
 			# ref = cv2.imread(imagePath,0)
 			# dim = (image.shape[1], image.shape[0])

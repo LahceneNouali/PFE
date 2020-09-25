@@ -35,14 +35,14 @@ surf = cv2.xfeatures2d.SURF_create()
 # parent directory
 parent = os.path.dirname(os.getcwd())
 # train_set path
-train_set = os.path.join(parent, 'dataset', train)
+train_set = os.path.join(parent, 'dataset', 'train')
 # grab the list of images in our dataset directory
 imagePaths = list(paths.list_images(train_set))
 
 # loop over the image paths
-count = 0
+count = 1
 for imagePath in imagePaths:
-	print(count); count += 1
+	print('{}/{}'.format(count, len(imagePaths))); count += 1
 	img = cv2.imread(imagePath,0)
         
     # find the keypoints and descriptors with SIFT or SURF

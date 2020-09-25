@@ -1,6 +1,5 @@
 package com.example.viguide;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
@@ -8,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +31,7 @@ public class MainActivity extends Activity {
             	if(isMyServiceRunning()){
             		stopService();
             	}
-            	quitApp(v);
+            	finish();
             }
         });
         
@@ -86,13 +84,5 @@ public class MainActivity extends Activity {
     	} else {
     		return false;
     	}
-    }
-    
-   @SuppressLint("NewApi") public void quitApp(View view) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            finishAndRemoveTask();
-        } else {
-            finish();
-        }
     }
 }
