@@ -1,5 +1,5 @@
  
 # Télécharger (mémoire.docx)
 
-* [OneDrive - جامعة أبي بكر بلقايد تلمسان](https://uabt-my.sharepoint.com/:w:/g/personal/lahcene_nouali_univ-tlemcen_dz/ER51esooQ4pGgFro3XXShd8BxxqFIlpEgbCLsX2Qj8UDfQ?e=uSKOZr)
+* [OneDrive - جامعة أبي بكر بلقايد تلمسان](https://uabt-my.sharepoint.com/:f:/g/personal/lahcene_nouali_univ-tlemcen_dz/EncSOF33jDpIjL0iuGy9anoBakOXpHvqK1ybRRarc7-aFQ?e=VQJqyg)
 
